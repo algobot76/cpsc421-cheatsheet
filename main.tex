@@ -62,6 +62,18 @@ If $A$ is a regular language, then there is an integer $p$ where $\exists s \in 
 
 \section{Turing Machines}
 
+Decidable languages are closed under:
+
+\begin{itemize}
+    \item Union: $M$ = Run $M_1$ \& $M_2$ at the same time, if either of them accepts, accept; otherwise reject.
+    \item Intersection: $M$ = $M$ = Run $M_1$ \& $M_2$ at the same time, if both accept, accept; otherwise reject.
+    \item Complement: $M$ = accept if $M_1$ rejects; reject if $M_1$ accepts.
+    \item Concatenation: $M$ = nondeterministically run $M_1$ on $y$ and $M_2$ on $z$ ($x = yz$); if both accept, accept; otherwise reject.
+    \item Star: $M$ = if $x = \epsilon$, accept; nondeterministically divide $x$ into $w_1\ldots w_k$ ($2^{\abs{x}-1}$ ways), then run $M_1$ on each $w_i$ and accept if $M_1$ accepts all, reject otherwise.
+\end{itemize}
+
+A language is decidable iff it is Turing-recognizable and co-Turing-recognizable.
+
 \subsection{Tutorials}
 
 \underline{Final Tutorial Q1D}
