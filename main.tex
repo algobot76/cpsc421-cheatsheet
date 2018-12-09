@@ -213,23 +213,17 @@ $M$ = given a Boolean formula $w$, try all possible assignments and accept if an
 
 \subsection{Graph Related Reductions}
 
-\underline{2012 WT1 FNL Q2B ($HALFCLIQUE$)}
+% 2012 WT1 FNL Q2B
+\underline{$HALFCLIQUE$}
 
 $G$ = graph with a clique of $k$ nodes. Construct graph $H$:
 
 Case 1: $k \geq \frac{n}{2}$. $H$ = $G$ with $l$ isolated new nodes ($k = \ceil{\frac{n + l}{2}}$).
 
-$\Rightarrow$: If $\encoding{G, k} \in CLIQUE$, then a clique of size $k$ in $H$. Since $k \geq \ceil{\frac{n + l}{2}}$, $\encoding{H} \in HALFCLIQUE$.
-
-$\Leftarrow$: If $\encoding{H} \in HALFCLIQUE$, then a clique of size $k \geq \ceil{\frac{n + l}{2}}$. This clique does not use any new isolated node, so the same clique of size $k$ in $G$. Thus $\encoding{G, k} \in CLIQUE$.
-
 Case 2: $k \leq \frac{n}{2}$. $H$ = $G$ with $l$ new nodes, each of which is connected to every other node.
 
-$\Rightarrow$: A clique of size $k$ in $G$ gives a clique in $H$ of size $n + l$.
-
-$\Leftarrow$: A clique in $H$ of size $k'$ gives a clique in $G$ of size at least $k' - l$. Since $H$ has $n + l$ nodes, we pick $l$ s.t. $k + l = \ceil{\frac{n + l}{2}}$.
-
-\underline{Reductions Tutorial Q2B ($DOMSET$)}
+% Reductions Tutorial Q2B
+\underline{$DOMSET$}
 
 Show $VC \leq_p DOMSET$
 
@@ -241,27 +235,24 @@ $G$ is a graph with a vertex cover of size $k$. Construct $G'$:
     \item Let $I$ = \# isolated vertices and set $k' = k + n_I$
 \end{itemize}
 
-Output $\encoding{G', k'}$.
+Output $\encoding{G', k'}$ for $DOMSET$.
 
-$\Rightarrow$: If $V$ is a vertex cover in $G$, then $V' = V \cup V_I$ is a domset for $G'$. $\abs{V'} = \abs{V \cup V_I} \leq k + n_I = k'$. We can add any vertices to make $\abs{V'} = k'$. Each special vertex $w_{uv}$ in $G'$ corresponds to an edge $(u, v)$, i.e. either $u$ or $v$ in $V$. Thus $w_{uv}$ is dominated by the same vertex in $V'$. Each vertex $u$ in $G$ is incident to an edge, i.e. it's either in $V$ or its neighbours in $V$ $\Rightarrow$ $u$ is either in $V'$ or adjacent to a vertex in $V'$.
-
-$\Leftarrow$: % TODO: DOMESET => VC
-
-\underline{Reductions Tutorial Q2C ($HITTING$)}
+% Reductions Tutorial Q2C
+\underline{$HITTING$}
 
 Show $VC \leq_p HITTING$
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. For each edge $(u, v)$, $S_i = \set{u, v}$
 
-% TODO: Reductions Tutorial Q2C Proof of correctness
-
-\underline{Reductions Tutorial Q2D ($SETCOVER$)}
+% Reductions Tutorial Q2D
+\underline{$SETCOVER$}
 
 Show $VC \leq_p SETCOVER$.
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. $S_i$ = set of edges incident to vertex $v_i$. $k$ is still the same.
 
-\underline{Reductions Tutorial Q2H ($TSP$)}
+% Reductions Tutorial Q2H
+\underline{$TSP$}
 
 Show $HAMPATH \leq_p TSP$.
 
@@ -273,8 +264,6 @@ $\encoding{G} \in HAMPATH$. Construct $G'$:
 \end{itemize}
 
 Output $\encoding{G', k}$ for $TSP$.
-
-% TODO: Reductions Tutorial Q2H: Proof of correctness
 
 \end{multicols*}
 
