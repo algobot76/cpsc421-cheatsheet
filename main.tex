@@ -21,6 +21,7 @@
 \titlespacing{\section}{0pt}{\parskip}{-\parskip}
 \titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
 
+\newcommand{\set}[1]{\left \{ #1 \right \}}
 \newcommand{\abs}[1]{\left | #1 \right |}
 
 \graphicspath{{images/}}
@@ -31,7 +32,7 @@
 
 \section{Regular Languages}
 
-\subsection{Closure properties}
+\subsection{Closure Properties}
 
 \begin{itemize}
     \item Union
@@ -50,6 +51,14 @@ If $A$ is a regular language, then there is an integer $p$ where $\exists S \in 
     \item $\abs{y} > 0$,
     \item $\abs{xy} \leq p$.
 \end{itemize}
+
+\subsection{Past Exams}
+
+\underline{2004 WT1 FNL Q1}
+
+\begin{enumerate}[label=\emph{\alph*)}]
+    \item If $L_1$ and $L_2$ are bot not regular, is $L_1 \cup L_2$ necessarily not regular? No. Let $L_1$ be not regular (e.g. $\set{0^n, 1^n}$) and $L_2 = \overline{L_1}$. Then $L_1 \cup L_2 = \Sigma^*$ is regular.
+\end{enumerate}
 
 \end{multicols*}
 
