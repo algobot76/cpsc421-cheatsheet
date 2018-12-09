@@ -62,6 +62,36 @@ If $A$ is a regular language, then there is an integer $p$ where $\exists s \in 
 
 \section{Time Complexity}
 
+\subsection{Time Complexity Classes}
+
+\includegraphics[scale=0.3]{time_complexity}
+
+\begin{itemize}
+    \item $P$ is the class of languages that are decidable in polytime on a deterministic single-tape Turing machine. $P = \bigcup\limits_{k} TIME(n^k)$.
+    \item $NP$ is the class of languages $L$ for which one can efficiently verify membership in $L$.
+    \item A language $B$ is $NP-complete$ if:
+    \begin{itemize}
+        \item $B \in NP$
+        \item every $A \in NP$ is polytime reducible to $B$
+    \end{itemize}
+    \item $coNP$ is a class of languages $L$ for which one can efficiently verify non-membership in $L$.
+    \item $L \in RP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \begin{itemize}
+        \item $x \in L$ if $Pr[\text{reaching accept}] \geq \frac{1}{2}$
+        \item $x \notin L$ if $Pr[\text{reaching reject}] = 1$
+    \end{itemize}
+    \item $L \in coRP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \begin{itemize}
+        \item $x \in L$ if $Pr[\text{reaching accept}] = 1$
+        \item $x \notin L$ if $Pr[\text{reaching reject}] \geq \frac{1}{2}$
+    \end{itemize}
+    \item $L \in BPP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \begin{itemize}
+        \item $x \in L$ if $Pr[\text{reaching accept}] \geq \frac{2}{3}$
+        \item $x \notin L$ if $Pr[\text{reaching reject}] \geq \frac{2}{3}$
+    \end{itemize}
+\end{itemize}
+
 \subsection{Past Exams}
 
 \underline{2004 WT1 FNL Q7}
