@@ -24,6 +24,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\set}[1]{\left \{ #1 \right \}}
 \newcommand{\abs}[1]{\left | #1 \right |}
+\newcommand{\ceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\encoding}[1]{\left \langle #1 \right \rangle}
 
 \graphicspath{{images/}}
 
@@ -142,10 +144,27 @@ Let $L_1, L_2 \in coNP$; $L_3 = L_1 \cup L_2$. NTM's $M_1$ and $M_2$ that decide
 
 $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Run $M_1$ and $M_2$. Accept if either of them accepts, reject if both reject.
 
+% TODO: coNP is closed under concatenation, complement, etc.
 
-\subsection{Past Exams}
+\subsection{Tutorials}
 
-\underline{2004 WT1 FNL Q7}
+\underline{Final Tutorial Q2B}
+% TODO: Final Tutorial Q2B
+
+\underline{Final Tutorial Q2C}
+% TODO: Final Tutorial Q2C
+
+% TODO: 2012 WT1 FNL Q4
+
+% TODO: 2012 WT1 FNL Q4
+
+\subsection{$3SAT$ Related Reductions}
+
+\underline{2004 WT1 FNL Q8 ($DOUBLESAT$)}
+
+$3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the $3CNF$ is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
+
+\underline{2004 WT1 FNL Q7 ($SUBSETSUM$)}
 
 $n$ variables $x_i$ and $m$ clauses $c_j$. For each variable $x_i$ construct numbers $t_i$ and $f_i$ of $n + m$ digits:
 
@@ -188,9 +207,39 @@ Subset exists $\Rightarrow$ formula is satisfiable
     \item Each clause is satisfied
 \end{itemize}
 
-\underline{2004 WT1 FNL Q8}
+\underline{2012 WT1 FNL Q2B ($A_{TM}$)}
 
-$3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the $3CNF$ is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
+$M$ = given a Boolean formula $w$, try all possible assignments and accept if any assignment satisfies $w$. Given a formula $\phi$, define $f(\phi) = \encoding{M, w}$. $f(\phi) \in A_{TM} \Rightarrow \phi \in 3SAT$.
+
+\subsection{Graph Related Reductions}
+
+\underline{2012 WT1 FNL Q2B ($HALFCLIQUE$)}
+
+$G$ = graph with a clique of $k$ nodes. Construct graph $H$:
+
+Case 1: $k \geq \frac{n}{2}$. $H$ = $G$ with $l$ isolated new nodes ($k = \ceil{\frac{n + l}{2}}$).
+
+$\Rightarrow$: If $\encoding{G, k} \in CLIQUE$, then a clique of size $k$ in $H$. Since $k \geq \ceil{\frac{n + l}{2}}$, $\encoding{H} \in HALFCLIQUE$.
+
+$\Leftarrow$: If $\encoding{H} \in HALFCLIQUE$, then a clique of size $k \geq \ceil{\frac{n + l}{2}}$. This clique does not use any new isolated node, so the same clique of size $k$ in $G$. Thus $\encoding{G, k} \in CLIQUE$.
+
+Case 2: $k \leq \frac{n}{2}$. $H$ = $G$ with $l$ new nodes, each of which is connected to every other node.
+
+$\Rightarrow$: A clique of size $k$ in $G$ gives a clique in $H$ of size $n + l$.
+
+$\Leftarrow$: A clique in $H$ of size $k'$ gives a clique in $G$ of size at least $k' - l$. Since $H$ has $n + l$ nodes, we pick $l$ s.t. $k + l = \ceil{\frac{n + l}{2}}$.
+
+\underline{Reductions Tutorial Q2B ($DOMSET$)}
+
+$\encoding{G, k}$ = $VC$. Construct $G'$:
+
+\begin{itemize}
+    \item $G' = G$
+    \item for each edge $\set{u, v}$ in $G$, add a new vertex $w_{uv}$ and new edges $\set{u, w_{uv}}$ and $\set{v, w_{uv}}$
+    \item Let $I$ = \# isolated vertices and set $k' = k + n_I$
+\end{itemize}
+
+Output $\encoding{G', k'}$.
 
 \end{multicols*}
 
