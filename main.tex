@@ -134,6 +134,13 @@ Let $L_1, L_2 \in NP$; $L_3 = L_1 \cup L_2$. $v_1$ and $v_2$ are verifiers for $
 
 % TODO: NP is closed under concatenation, complement, etc.
 
+\underline{coNP is closed under union}:
+
+Let $L_1, L_2 \in coNP$; $L_3 = L_1 \cup L_2$. NTM's $M_1$ and $M_2$ that decide $\overline{L_1}$ and $\overline{L_2}$ in polytime. Construct $M_3$ that decides $\overline{L_1 \cup L_2} = \overline{L_1} \cap \overline{L_2}$ in polytime. Run $M_1$ and $M_2$. Accept if both accept, rejects otherwise.
+
+\underline{coNP is closed under intersection}:
+
+$\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Run $M_1$ and $M_2$. Accept if either of them accepts, reject if both reject.
 
 
 \subsection{Past Exams}
