@@ -257,14 +257,24 @@ $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices
 
 \underline{Reductions Tutorial Q2D ($SETCOVER$)}
 
-Show $VC \leq_p SETCOVER$
+Show $VC \leq_p SETCOVER$.
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. $S_i$ = set of edges incident to vertex $v_i$. $k$ is still the same.
 
-\underline{Reductions Tutorial Q2H ($SALESMAN$)}
+\underline{Reductions Tutorial Q2H ($TSP$)}
 
-Show $HAMPATH \leq_p SALESMAN$.
+Show $HAMPATH \leq_p TSP$.
 
+$\encoding{G} \in HAMPATH$. Construct $G'$:
+
+\begin{itemize}
+    \item $G' = G$
+    \item $k = \abs{V}$
+\end{itemize}
+
+Output $\encoding{G', k}$ for $TSP$.
+
+% TODO: Reductions Tutorial Q2H: Proof of correctness
 
 \end{multicols*}
 
