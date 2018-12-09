@@ -231,15 +231,40 @@ $\Leftarrow$: A clique in $H$ of size $k'$ gives a clique in $G$ of size at leas
 
 \underline{Reductions Tutorial Q2B ($DOMSET$)}
 
-$\encoding{G, k}$ = $VC$. Construct $G'$:
+Show $VC \leq_p DOMSET$
+
+$G$ is a graph with a vertex cover of size $k$. Construct $G'$:
 
 \begin{itemize}
     \item $G' = G$
-    \item for each edge $\set{u, v}$ in $G$, add a new vertex $w_{uv}$ and new edges $\set{u, w_{uv}}$ and $\set{v, w_{uv}}$
+    \item for each edge $(u, v)$ in $G$, add a new vertex $w_{uv}$ and new edges $\set{u, w_{uv}}$ and $\set{v, w_{uv}}$
     \item Let $I$ = \# isolated vertices and set $k' = k + n_I$
 \end{itemize}
 
 Output $\encoding{G', k'}$.
+
+$\Rightarrow$: If $V$ is a vertex cover in $G$, then $V' = V \cup V_I$ is a domset for $G'$. $\abs{V'} = \abs{V \cup V_I} \leq k + n_I = k'$. We can add any vertices to make $\abs{V'} = k'$. Each special vertex $w_{uv}$ in $G'$ corresponds to an edge $(u, v)$, i.e. either $u$ or $v$ in $V$. Thus $w_{uv}$ is dominated by the same vertex in $V'$. Each vertex $u$ in $G$ is incident to an edge, i.e. it's either in $V$ or its neighbours in $V$ $\Rightarrow$ $u$ is either in $V'$ or adjacent to a vertex in $V'$.
+
+$\Leftarrow$: % TODO: DOMESET => VC
+
+\underline{Reductions Tutorial Q2C ($HITTING$)}
+
+Show $VC \leq_p HITTING$
+
+$G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. For each edge $(u, v)$, $S_i = \set{u, v}$
+
+% TODO: Reductions Tutorial Q2C Proof of correctness
+
+\underline{Reductions Tutorial Q2D ($SETCOVER$)}
+
+Show $VC \leq_p SETCOVER$
+
+$G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. $S_i$ = set of edges incident to vertex $v_i$. $k$ is still the same.
+
+\underline{Reductions Tutorial Q2H ($SALESMAN$)}
+
+Show $HAMPATH \leq_p SALESMAN$.
+
 
 \end{multicols*}
 
