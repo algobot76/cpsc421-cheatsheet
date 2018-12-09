@@ -21,6 +21,7 @@
 \titlespacing{\section}{0pt}{\parskip}{-\parskip}
 \titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
 
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\set}[1]{\left \{ #1 \right \}}
 \newcommand{\abs}[1]{\left | #1 \right |}
 
@@ -52,6 +53,12 @@ If $A$ is a regular language, then there is an integer $p$ where $\exists s \in 
     \item $\abs{xy} \leq p$.
 \end{itemize}
 
+\subsection{Tutorials}
+
+\underline{Final Tutorial Q1B}
+
+To prove $L$ is not regular, we can use another regular $L'$ (e.g. $\set{0^n1^m: n, m \in \N}$). Apply Pumping Lemma on $L \cap L'$.
+
 \subsection{Past Exams}
 
 \underline{2004 WT1 FNL Q1}
@@ -70,6 +77,13 @@ Decidable languages are closed under:
     \item Complement: $M$ = accept if $M_1$ rejects; reject if $M_1$ accepts.
     \item Concatenation: $M$ = nondeterministically run $M_1$ on $y$ and $M_2$ on $z$ ($x = yz$); if both accept, accept; otherwise reject.
     \item Star: $M$ = if $x = \epsilon$, accept; nondeterministically divide $x$ into $w_1\ldots w_k$ ($2^{\abs{x}-1}$ ways), then run $M_1$ on each $w_i$ and accept if $M_1$ accepts all, reject otherwise.
+    \item Difference: $M$ = accept if $M_1$ accepts and $M_2$ rejects; reject otherwise.
+\end{itemize}
+
+Recognizable languages are not closed under:
+
+\begin{itemize}
+    \item Difference: $A_{TM}$ is recognizable but $\overline{A_{TM}}$ is not, otherwise $A_{TM}$ would be decidable. $\Sigma^*$ is recognizable and $\Sigma^* \setminus A_{TM} = \overline{A_{TM}}$ is not recognizable.
 \end{itemize}
 
 A language is decidable iff it is Turing-recognizable and co-Turing-recognizable.
