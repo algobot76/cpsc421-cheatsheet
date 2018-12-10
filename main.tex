@@ -146,12 +146,8 @@ $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Ru
 
 % TODO: coNP is closed under concatenation, complement, etc.
 
-\subsection{Tutorials}
-
-\underline{Final Tutorial Q2B}
 % TODO: Final Tutorial Q2B
 
-\underline{Final Tutorial Q2C}
 % TODO: Final Tutorial Q2C
 
 % TODO: 2012 WT1 FNL Q4
@@ -160,11 +156,13 @@ $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Ru
 
 \subsection{$3SAT$ Related Reductions}
 
-\underline{2004 WT1 FNL Q8 ($DOUBLESAT$)}
+% 2004 WT1 FNL Q8
+\underline{$DOUBLESAT$}
 
 $3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the $3CNF$ is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
 
-\underline{2004 WT1 FNL Q7 ($SUBSETSUM$)}
+% 2004 WT1 FNL Q7
+\underline{$SUBSETSUM$}
 
 $n$ variables $x_i$ and $m$ clauses $c_j$. For each variable $x_i$ construct numbers $t_i$ and $f_i$ of $n + m$ digits:
 
@@ -188,26 +186,27 @@ Finally, construct a sum number $s$ of $n + m$ digits:
     \item For $n + 1 \leq j \leq n + m$, the $j$-th digit of $s = 3$
 \end{itemize}
 
-Formula is satisfiable $\Rightarrow$ subset exists:
+% Formula is satisfiable $\Rightarrow$ subset exists:
 
-\begin{itemize}
-    \item Take $t_i$ if $x_i$ is true
-    \item Take $f_i$ if $x_i$ is false
-    \item Take $x_j$ if \# true literals in $c_j$ is at most 2
-    \item Take $y_j$ if \# true literals in $c_j$ is 1
-\end{itemize}
+% \begin{itemize}
+%     \item Take $t_i$ if $x_i$ is true
+%     \item Take $f_i$ if $x_i$ is false
+%     \item Take $x_j$ if \# true literals in $c_j$ is at most 2
+%     \item Take $y_j$ if \# true literals in $c_j$ is 1
+% \end{itemize}
 
-Subset exists $\Rightarrow$ formula is satisfiable
+% Subset exists $\Rightarrow$ formula is satisfiable
 
-\begin{itemize}
-    \item $x_i = $ true if $t_i$ in subset
-    \item $x_i = $ false if $f_i$ in subset
-    \item Exactly one number per variable must be in subset, otherwise one of first $n$ digits of the sum $ > 1$
-    \item At least one variable number corresponding to a literal in a clause must be in the subset, otherwise one of next $m$ digits of the sum $< 3$
-    \item Each clause is satisfied
-\end{itemize}
+% \begin{itemize}
+%     \item $x_i = $ true if $t_i$ in subset
+%     \item $x_i = $ false if $f_i$ in subset
+%     \item Exactly one number per variable must be in subset, otherwise one of first $n$ digits of the sum $ > 1$
+%     \item At least one variable number corresponding to a literal in a clause must be in the subset, otherwise one of next $m$ digits of the sum $< 3$
+%     \item Each clause is satisfied
+% \end{itemize}
 
-\underline{2012 WT1 FNL Q2B ($A_{TM}$)}
+% 2012 WT1 FNL Q2B
+\underline{$A_{TM}$}
 
 $M$ = given a Boolean formula $w$, try all possible assignments and accept if any assignment satisfies $w$. Given a formula $\phi$, define $f(\phi) = \encoding{M, w}$. $f(\phi) \in A_{TM} \Rightarrow \phi \in 3SAT$.
 
