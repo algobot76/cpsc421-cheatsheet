@@ -357,6 +357,16 @@ Output $\encoding{G', k}$ for $TSP$.
 
 For any time-constructable function $t: \mathcal{N} \rightarrow \mathcal{N}$, a language $A$ exists that is is decidable in $O(t(n))$ time but not decidable in $o(\frac{t(n)}{\log{t(n)}})$.
 
+\textbf{Examples}:
+
+\underline{P $\subseteq TIME(n^5)$?}
+
+False. By THT, there exists $L \in TIME(n^{20}) \setminus TIME(n^5)$. Clearly $L \in$ P (since $TIME(n^{20}) \subseteq$ P). Thus, $L \in$ P, but $| \notin TIME(n^5)$.
+
+\underline{E = $\bigcup_{c > 0} TIME(2^{cn})$ = EXP?}
+
+False. By THT, there exists $L \in TIME(2^{4n^2}) \setminus TIME(2^{n^2})$. Clearly, $L \in$ EXP. Since $L \notin TIME(2^{n^2})$, the following claim implies $L \notin$ E, from which we conclude that E $\neq$ EXP. Claim: $E \subset TIME(2^{n^2})$. Proof: For $A \in $ E, there is a TM $M$ and constants $c, C, n_0 >0$ and its runtime is at most $C2^{cn} \; \forall n \geq n_0$. Note $C2^{cn} \leq C2^{n^2} \; \forall n \geq \max \set{c, n_0}$, so the runtime of $M$ is $O(2^{n^2})$. Thus, $A \in TIME(2^{n^2})$.
+
 \section{Communication Complexity}
 
 \subsection{Trivial Protocol}
