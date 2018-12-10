@@ -260,12 +260,10 @@ Swap accepting and rejecting states.
 
 \subsection{$3SAT$ Related Reductions}
 
-% 2004 WT1 FNL Q8
 \underline{$DOUBLESAT$}
 
 $3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the 3CNF is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
 
-% Reductions Tutorial Q1B
 \underline{$CNF_3$}
 
 Show $3SAT \leq_P CNF_3$.
@@ -300,7 +298,6 @@ Finally, construct a sum number $s$ of $n + m$ digits:
 
 $M$ = given a Boolean formula $w$, try all possible assignments and accept if any assignment satisfies $w$. Given a formula $\phi$, define $f(\phi) = \encoding{M, w}$. $f(\phi) \in A_{TM} \Rightarrow \phi \in 3SAT$.
 
-% Reductions Tutorial Q1F
 \underline{$HALT_{TM}$}
 
 $M$ = given a Boolean formula $w$, try all possible assignments. It runs forever, if a satisfiable assignment is not found. It only halts iff the $3SAT$ instance is satisfiable.
@@ -309,7 +306,6 @@ Output $\encoding{M, w}$.
 
 \subsection{Graph Related Reductions}
 
-% 2012 WT1 FNL Q2B
 \underline{$HALFCLIQUE$}
 
 $G$ = graph with a clique of $k$ nodes. Construct graph $H$:
@@ -318,7 +314,6 @@ Case 1: $k \geq \frac{n}{2}$. $H$ = $G$ with $l$ isolated new nodes ($k = \ceil{
 
 Case 2: $k \leq \frac{n}{2}$. $H$ = $G$ with $l$ new nodes, each of which is connected to every other node.
 
-% Reductions Tutorial Q2B
 \underline{$DOMSET$}
 
 Show $VC \leq_P DOMSET$
@@ -333,21 +328,18 @@ $G$ is a graph with a vertex cover of size $k$. Construct $G'$:
 
 Output $\encoding{G', k'}$ for $DOMSET$.
 
-% Reductions Tutorial Q2C
 \underline{$HITTING$}
 
 Show $VC \leq_P HITTING$
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. For each edge $(u, v)$, $S_i = \set{u, v}$
 
-% Reductions Tutorial Q2D
 \underline{$SETCOVER$}
 
 Show $VC \leq_P SETCOVER$.
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. $S_i$ = set of edges incident to vertex $v_i$. $k$ is still the same.
 
-% Reductions Tutorial Q2H
 \underline{$TSP$}
 
 Show $HAMPATH \leq_P TSP$.
@@ -360,6 +352,10 @@ $\encoding{G} \in HAMPATH$. Construct $G'$:
 \end{itemize}
 
 Output $\encoding{G', k}$ for $TSP$.
+
+\subsection{Time Hierarchy Theorem}
+
+For any time-constructable function $t: \mathcal{N} \rightarrow \mathcal{N}$, a language $A$ exists that is is decidable in $O(t(n))$ time but not decidable in $o(\frac{t(n)}{\log{t(n)}})$.
 
 \section{Communication Complexity}
 
