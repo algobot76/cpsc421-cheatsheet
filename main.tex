@@ -21,6 +21,7 @@
 \titlespacing{\section}{0pt}{\parskip}{-\parskip}
 \titlespacing{\subsection}{0pt}{\parskip}{-\parskip}
 
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\set}[1]{\left \{ #1 \right \}}
 \newcommand{\abs}[1]{\left | #1 \right |}
@@ -92,7 +93,7 @@ $S \rightarrow \epsilon | SS | aSaSb | aSbSa | bSaSa$
     \item Star: $S \rightarrow SS_1 | \epsilon$
 \end{itemize}
 
-\section{Turing Machines}
+\section{Decidability}
 
 \subsection{Closure Properties}
 
@@ -113,15 +114,24 @@ Recognizable languages are not closed under:
     \item Difference: $A_{TM}$ is recognizable but $\overline{A_{TM}}$ is not, otherwise $A_{TM}$ would be decidable. $\Sigma^*$ is recognizable and $\Sigma^* \setminus A_{TM} = \overline{A_{TM}}$ is not recognizable.
 \end{itemize}
 
-\subsection{Decidability}
+\subsection{The Diagonalization Method}
+
+\begin{itemize}
+    \item A set $A$ is countable if either it is finite or it has the same size as $\N$.
+    \item $\R$ is uncountable.
+\end{itemize}
+
+\subsection{Misc}
 
 A language is decidable iff it is Turing-recognizable and co-Turing-recognizable.
 
-\subsection{TM Reductions}
+\section{Reducibility}
 
 \includegraphics[scale=0.5]{general_approach_to_tm_reductions}
 
-\underline{Reductions Tutorial Q4B}
+\textbf{Examples}:
+
+\underline{$E_{TM}$}
 
 Let $E_{TM} = \set{\encoding{M}: M \text{ is a TM s.t. } L(M) = \emptyset}$. Prove $E_{TM}$ is undecidable. Prove $\overline{E_{TM}}$ is recognizable. Is $E_{TM}$ recognizable?
 
