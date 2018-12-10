@@ -159,7 +159,14 @@ $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Ru
 % 2004 WT1 FNL Q8
 \underline{$DOUBLESAT$}
 
-$3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the $3CNF$ is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
+$3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instance, so the 3CNF is satisfiable iff $DOUBLE-SAT$ has at least 2 satisfying assignments.
+
+% Reductions Tutorial Q1B
+\underline{$CNF_3$}
+
+Show $3SAT \leq_p CNF_3$.
+
+Given a 3CNF formula $\phi$. For each variable $x$ give different names $x_1, \ldots, x_k$. Then we define $\phi_x = (x_1 \vee \neg x_2) \wedge (x_2 \vee \neg x_3) \wedge \ldots \wedge (x_k \vee \neg x_1)$. $a_1 = \ldots = a_k$ to satisfy $\phi_x$. $\varphi = \bigwedge_x \phi_x$.
 
 % 2004 WT1 FNL Q7
 \underline{$SUBSETSUM$}
