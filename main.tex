@@ -289,6 +289,8 @@ Probabilities:
 
 Swap accepting and rejecting states.
 
+% TODO: The Cook-Levin Theorem
+
 \subsection{$3SAT$ Related Reductions}
 
 \underline{$DOUBLESAT$}
@@ -419,8 +421,8 @@ $D(f) \leq \lg(x) + \lg(z)$.
         \item every $(x, y) \in X \times Y$ is in exactly one $R_i$
     \end{itemize}
     \item For any protocol tree $T$, the set $\set{R_v: v \text{ is a leaf of } T}$ is an f-monochromatic partition.
-    \item $C^{partition} (f) = \min \set{\abs{\mathcal{R}}: \mathcal{R} \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
-    \item $D(f) \geq \ceil{\lg{C^{partition} (f)}}$
+    \item $C^{\text{partition}} (f) = \min \set{\abs{\mathcal{R}}: \mathcal{R} \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
+    \item $D(f) \geq \ceil{\lg{C^{\text{partition}} (f)}}$
 \end{itemize}
 
 \subsection{Fooling Sets}
@@ -444,6 +446,32 @@ $D(f) \geq \ceil{\log(\abs{S} + 1)}$
     \item $D(DISJ_n) \geq n + 1$, $S = \set{(A, \overline{A}): A \subseteq U}$ \\
     \includegraphics[scale=0.5]{disj_2}
 \end{itemize}
+
+\subsection{Nondeterministic Communication Complexity}
+
+\begin{itemize}
+    \item $N(f) = \min k$ s.t.
+    \begin{itemize}
+        \item $f(x, y) = 1 \Rightarrow \exists z \in \set{0, 1}^k, A(x, z) = 1 \wedge B(y, z) = 1$.
+        \item $f(x, y) = 0 \Rightarrow \forall z \in \set{0, 1}^k, A(x, z) = 0\vee B(y, z) = 0$.
+    \end{itemize}
+    \item $f$ is known to everyone.
+    \item Bob doesn't know $x$, Alice doesn't know $y$.
+    \item Alice and Bob don't communicate.
+    \item $C^{\text{partition}} \geq C^{\text{1-cover}} (f) + C^{\text{1-cover}} (\neg f)$
+    \item $N(f) \geq \ceil{\log{\abs{S}}}$
+    \item $N(f) = \ceil{\log{C^{\text{1-cover}} (f)}} \leq \ceil{\log{C^{\text{partition}} (f)}} \leq D(f)$
+\end{itemize}
+
+\textbf{Examples}:
+
+\begin{itemize}
+    \item $\neg DISJ$ \\
+    \includegraphics[scale=0.5]{not_disj1} \\
+    \includegraphics[scale=0.5]{not_disj2}
+\end{itemize}
+
+% TODO: Reductions
 
 \end{multicols*}
 
