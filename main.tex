@@ -30,6 +30,7 @@
 \graphicspath{{images/}}
 
 \begin{document}
+\small
 
 \begin{multicols*}{3}
 
@@ -154,56 +155,108 @@ $\overline{E_{TM}}$ is recognizable and $E_{TM}$ is undecidable $\Rightarrow E_{
 \includegraphics[scale=0.3]{time_complexity}
 
 \begin{itemize}
-    \item $P$ is the class of languages that are decidable in polytime on a deterministic single-tape Turing machine. $P = \bigcup\limits_{k} TIME(n^k)$.
-    \item $NP$ is the class of languages $L$ for which one can efficiently verify membership in $L$.
-    \item A language $B$ is $NP-complete$ if:
+    \item P is the class of languages that are decidable in polytime on a deterministic single-tape Turing machine. P $= \bigcup\limits_{k} TIME(n^k)$.
+    \item NP is the class of languages $L$ for which one can efficiently verify membership in $L$. NP $= \bigcup\limits_{k} NTIME(n^k)$
+    \item A language $B$ is NP-complete if:
     \begin{itemize}
-        \item $B \in NP$
-        \item every $A \in NP$ is polytime reducible to $B$
+        \item $B \in$ NP
+        \item every $A \in$ NP is polytime reducible to $B$
     \end{itemize}
-    \item $coNP$ is a class of languages $L$ for which one can efficiently verify non-membership in $L$.
-    \item $L \in RP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \item coNP is a class of languages $L$ for which one can efficiently verify non-membership in $L$.
+    \item $L \in$ RP if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
     \begin{itemize}
         \item $x \in L$ if $Pr[\text{reaching accept}] \geq \frac{1}{2}$
         \item $x \notin L$ if $Pr[\text{reaching reject}] = 1$
     \end{itemize}
-    \item $L \in coRP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \item $L \in$ coRP if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
     \begin{itemize}
         \item $x \in L$ if $Pr[\text{reaching accept}] = 1$
         \item $x \notin L$ if $Pr[\text{reaching reject}] \geq \frac{1}{2}$
     \end{itemize}
-    \item $L \in BPP$ if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
+    \item $L \in$ BPP if there is a PTM that, on input $x$, runs in time $poly(x)$, and has behavior:
     \begin{itemize}
         \item $x \in L$ if $Pr[\text{reaching accept}] \geq \frac{2}{3}$
         \item $x \notin L$ if $Pr[\text{reaching reject}] \geq \frac{2}{3}$
     \end{itemize}
+    \item EXP $= \bigcup\limits_{k} TIME(2^{n^k})$.
 \end{itemize}
 
-\subsection{Closure Properties}
+\subsection{NP, coNP, RP, BPP}
 
-\underline{$NP$ is closed under union}:
+\underline{NP is closed under union}:
 
-Let $L_1, L_2 \in NP$; $L_3 = L_1 \cup L_2$. $v_1$ and $v_2$ are verifiers for $L_1$ and $L_2$. $v_3 = v_1 \vee v_2$. $v_3$ is polytime $\Rightarrow L_3 \in NP$.
+Let $L_1, L_2 \in$ NP; $L_3 = L_1 \cup L_2$. $v_1$ and $v_2$ are verifiers for $L_1$ and $L_2$. $v_3 = v_1 \vee v_2$. $v_3$ is polytime $\Rightarrow L_3 \in$ NP.
 
 % TODO: NP is closed under concatenation, complement, etc.
 
 \underline{coNP is closed under union}:
 
-Let $L_1, L_2 \in coNP$; $L_3 = L_1 \cup L_2$. NTM's $M_1$ and $M_2$ that decide $\overline{L_1}$ and $\overline{L_2}$ in polytime. Construct $M_3$ that decides $\overline{L_1 \cup L_2} = \overline{L_1} \cap \overline{L_2}$ in polytime. Run $M_1$ and $M_2$. Accept if both accept, rejects otherwise.
+Let $L_1, L_2 \in$ coNP; $L_3 = L_1 \cup L_2$. NTM's $M_1$ and $M_2$ that decide $\overline{L_1}$ and $\overline{L_2}$ in polytime. Construct $M_3$ that decides $\overline{L_1 \cup L_2} = \overline{L_1} \cap \overline{L_2}$ in polytime. Run $M_1$ and $M_2$. Accept if both accept, rejects otherwise.
 
 \underline{coNP is closed under intersection}:
 
 $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Run $M_1$ and $M_2$. Accept if either of them accepts, reject if both reject.
 
-% TODO: coNP is closed under concatenation, complement, etc.
+\underline{$L$ is NP-complete iff its complement is coNP-complete}
 
-% TODO: Final Tutorial Q2B
+Suppose $L$ is NP-complete. Then $\overline{L}$ is in coNP because $L$ is in NP. Suppose $A$ is coNP, we want $A \leq_P \overline{L}$. Observe that $\overline{A}$ is in NP, and so $\overline{A} \leq_P L$ ($L$ is in NP-hard), but this is equivalent to saying $A \leq_P \overline{L}$ as desired. The other direction is similar.
 
-% TODO: Final Tutorial Q2C
+\underline{if a coNP-complete problem in NP, then coNP = NP}
 
-% TODO: 2012 WT1 FNL Q4
+Suppose $A$ is coNP-complete and $A$ is in NP. Let $L$ be in coNP. Then $\overline{L}$ in NP. Because $\overline{A}$ is in NP-complete, $\overline{L} \leq_P \overline{A}$, which is equivalent to $L \leq_P A$. But since $A$ is in NP, then $L$ is also in NP. Let $L$ be in NP. Then $L \leq_P \overline{A}$ because $\overline{A}$ is NP-complete. Equivalently, $\overline{L} \leq A$. Because $A$ is in NP, then $\overline{L}$ is in NP, meaning $L$ is in coNP.
 
-% TODO: 2012 WT1 FNL Q4
+\underline{RP $\subset$ NP}
+
+Convert a PTM into NTM by changing all probabilistic choices into non-deterministic choices. Let $L \in$ RP and $M$ be a PTM. After conversion, NTM correctly accepts/rejects $w \in L$ because:
+
+\begin{itemize}
+    \item $w \notin L$, PTM rejects $w$ with probability = 1, so does NTM.
+    \item $w \in L$, PTM accepts $w$ with probability $\geq \frac{1}{2}$, so there is a computational path for NTM, which terminates in an accepting state.
+\end{itemize}
+
+\underline{RP and BPP are closed under union and intersection}
+
+Let $L_1, L_2 \in$ RP, and two PTMs $M_1$, $M_2$.
+
+$L_1 \cup L_2 \in$ RP. Run $M_1$ and $M_2$ independently on input $x$. Accept if either one of them accepts.
+
+\begin{itemize}
+    \item $x \in L_1 \setminus L_2$ or $x \in L_1 \setminus L_2$: $Pr[accept] \geq \frac{1}{2}$ of $M_1$ or $M_2$.
+    \item $x \in L_1 \cap L_2$: $Pr[accept] \geq \frac{1}{2}$ of $M_1$ or $M_2$.
+    \item $x \notin L_1$ or $x \notin L_1$: $Pr[reject] = 1$ of $M_1$ or $M_2$.
+\end{itemize}
+
+$L_1 \cap L_2 \in$ RP. Run $M_1$ and $M_2$ independently on input $x$. Accept if both of them accept.
+
+\begin{itemize}
+    \item One time: $Pr[accept] \geq \frac{1}{4}$.
+    \item Three times: at least one trial where both accept $Pr[accept] = 1 - (1-\frac{1}{4})^3 \approx 0.58 \geq \frac{1}{2}$
+\end{itemize}
+
+BPP can be proven closed under union and intersection in a similar way.
+
+\underline{RP $\subset$ BPP}
+
+Let $L \in$ RP and PTM $M$.
+
+$M'$ = on input $x$:
+
+\begin{itemize}
+    \item Run $M$ on $x$ twice.
+    \item \emph{Accept} when one of the trials where $M$ accepts $x$.
+\end{itemize}
+
+Probabilities:
+
+\begin{itemize}
+    \item When $x \in L$, $Pr[reject] \leq \frac{1}{4}$.
+    \item When $x \in L$, $Pr[accept] \geq \frac{3}{4}$.
+    \item When $x \notin L$, $Pr[reject] = 1$.
+\end{itemize}
+
+\underline{BPP = coBPP}
+
+Swap accepting and rejecting states.
 
 \subsection{$3SAT$ Related Reductions}
 
@@ -219,7 +272,6 @@ Show $3SAT \leq_P CNF_3$.
 
 Given a 3CNF formula $\phi$. For each variable $x$ give different names $x_1, \ldots, x_k$. Then we define $\phi_x = (x_1 \vee \neg x_2) \wedge (x_2 \vee \neg x_3) \wedge \ldots \wedge (x_k \vee \neg x_1)$. $a_1 = \ldots = a_k$ to satisfy $\phi_x$. $\varphi = \bigwedge_x \phi_x$.
 
-% 2004 WT1 FNL Q7
 \underline{$SUBSETSUM$}
 
 $n$ variables $x_i$ and $m$ clauses $c_j$. For each variable $x_i$ construct numbers $t_i$ and $f_i$ of $n + m$ digits:
@@ -244,26 +296,6 @@ Finally, construct a sum number $s$ of $n + m$ digits:
     \item For $n + 1 \leq j \leq n + m$, the $j$-th digit of $s = 3$
 \end{itemize}
 
-% Formula is satisfiable $\Rightarrow$ subset exists:
-
-% \begin{itemize}
-%     \item Take $t_i$ if $x_i$ is true
-%     \item Take $f_i$ if $x_i$ is false
-%     \item Take $x_j$ if \# true literals in $c_j$ is at most 2
-%     \item Take $y_j$ if \# true literals in $c_j$ is 1
-% \end{itemize}
-
-% Subset exists $\Rightarrow$ formula is satisfiable
-
-% \begin{itemize}
-%     \item $x_i = $ true if $t_i$ in subset
-%     \item $x_i = $ false if $f_i$ in subset
-%     \item Exactly one number per variable must be in subset, otherwise one of first $n$ digits of the sum $ > 1$
-%     \item At least one variable number corresponding to a literal in a clause must be in the subset, otherwise one of next $m$ digits of the sum $< 3$
-%     \item Each clause is satisfied
-% \end{itemize}
-
-% 2012 WT1 FNL Q2B
 \underline{$A_{TM}$}
 
 $M$ = given a Boolean formula $w$, try all possible assignments and accept if any assignment satisfies $w$. Given a formula $\phi$, define $f(\phi) = \encoding{M, w}$. $f(\phi) \in A_{TM} \Rightarrow \phi \in 3SAT$.
