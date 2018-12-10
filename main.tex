@@ -68,6 +68,30 @@ If $A$ is a regular language, then there is an integer $p$ where $\exists s \in 
     \item To prove $L$ is not regular, we can use another regular $L'$ (e.g. $\set{0^n1^m: n, m \in \N}$). Apply Pumping Lemma on $L \cap L'$.
 \end{itemize}
 
+\section{Context-Free Languages}
+
+\textbf{Examples}:
+
+\underline{\#$a$'s = \#$b$'s}
+
+$S \rightarrow aSbS | bSaS | \epsilon$
+
+\underline{\#$a$'s $\geq$ \#$b$'s}
+
+$S \rightarrow SS | aSbS | bSaS | a | \epsilon$
+
+\underline{\#$a$'s = 2\#$b$'s}
+
+$S \rightarrow \epsilon | SS | aSaSb | aSbSa | bSaSa$
+
+\subsection{Closure Properties}
+
+\begin{itemize}
+    \item Union: $S \rightarrow S_1 | S_2$
+    \item Concatenation: $S \rightarrow S_1S_2$
+    \item Star: $S \rightarrow SS_1 | \epsilon$
+\end{itemize}
+
 \section{Turing Machines}
 
 \subsection{Closure Properties}
