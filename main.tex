@@ -413,10 +413,14 @@ $D(f) \leq \lg(x) + \lg(z)$.
 \subsection{Monochromatic Partition}
 
 \begin{itemize}
-    \item $\mathcal{R} = \set{R_1, \ldots, R_k}$
-    \item $C^{partition} (f) = \min \set{\abs{R}: R \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
-    \item For any protocol tree $T$, $\set{R_v: v \text{ is a leaf of } T}$ is an f-monochromatic partition.
-    \item $D(f) \geq \ceil{\lg(C^{partition} (f))}$
+    \item $\mathcal{R} = \set{R_1, \ldots, R_k}$ is called f-monochromatic partition (into rectangles) if:
+    \begin{itemize}
+        \item each $R_i$ is f-monochromatic
+        \item every $(x, y) \in X \times Y$ is in exactly one $R_i$
+    \end{itemize}
+    \item For any protocol tree $T$, the set $\set{R_v: v \text{ is a leaf of } T}$ is an f-monochromatic partition.
+    \item $C^{partition} (f) = \min \set{\abs{\mathcal{R}}: \mathcal{R} \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
+    \item $D(f) \geq \ceil{\lg{C^{partition} (f)}}$
 \end{itemize}
 
 \subsection{Fooling Sets}
@@ -430,12 +434,15 @@ Let $f: X \times Y \rightarrow Z$. A set $S$ is a fooling set for $f$ if :
 
 $D(f) \geq \ceil{\log(\abs{S} + 1)}$
 
-Examples:
+\textbf{Examples}:
 
 \begin{itemize}
-    \item $D(EQ_n) \geq n + 1$
-    \item $D(GEQ_n) \geq n + 1$
-    \item $D(DISJ_n) \geq n + 1$
+    \item $D(EQ_n) \geq n + 1$, $S = \set{(x, x): x \in \set{0, 1}^n}$ \\
+    \includegraphics[scale=0.5]{eq_2}
+    \item $D(GEQ_n) \geq n + 1$, $S = \set{(x, x): x \in \set{0, 1}^n}$ \\
+    \includegraphics[scale=0.5]{gte_2}
+    \item $D(DISJ_n) \geq n + 1$, $S = \set{(A, \overline{A}): A \subseteq U}$ \\
+    \includegraphics[scale=0.5]{disj_2}
 \end{itemize}
 
 \end{multicols*}
