@@ -71,6 +71,8 @@ To prove $L$ is not regular, we can use another regular $L'$ (e.g. $\set{0^n1^m:
 
 \section{Turing Machines}
 
+\subsection{Closure Properties}
+
 Decidable languages are closed under:
 
 \begin{itemize}
@@ -88,13 +90,62 @@ Recognizable languages are not closed under:
     \item Difference: $A_{TM}$ is recognizable but $\overline{A_{TM}}$ is not, otherwise $A_{TM}$ would be decidable. $\Sigma^*$ is recognizable and $\Sigma^* \setminus A_{TM} = \overline{A_{TM}}$ is not recognizable.
 \end{itemize}
 
+\subsection{Decidability}
+
 A language is decidable iff it is Turing-recognizable and co-Turing-recognizable.
 
-\subsection{Tutorials}
+\subsection{TM Reductions}
 
-\underline{Final Tutorial Q1D}
+\includegraphics[scale=0.5]{general_approach_to_tm_reductions}
 
-Set of decidable languages is countable \& set of all languages is uncountable $\Rightarrow$ set of undecidable languages is uncountable.
+\underline{Reductions Tutorial Q4B}
+
+Let $E_{TM} = \set{\encoding{M}: M \text{ is a TM s.t. } L(M) = \emptyset}$. Prove $E_{TM}$ is undecidable. Prove $\overline{E_{TM}}$ is recognizable. Is $E_{TM}$ recognizable?
+
+Let $R$ be a TM that decides $E_{TM}$. Below is a TM $S$ that decides $A_{TM}$.
+
+$S = $ on input $x$:
+
+\begin{itemize}
+    \item If $x$ not of form $\encoding{M, w}$, where $M$ is a TM, and $w \in \Sigma^*$, \emph{reject}.
+    \item Construct $N$ = on input $y$:
+    \begin{itemize}
+        \item Run $M$ on $w$
+        \item If $M$ rejects, \emph{reject}.
+        \item Otherwise \emph{accept}.
+    \end{itemize}
+    \item Run $R$ on $\encoding{N}$.
+    \item \emph{Reject} if $R$ accepts; otherwise \emph{accept}.
+\end{itemize}
+
+$S$ is a valid TM that decides $A_{TM}$ because:
+
+\begin{itemize}
+    \item when $M$ accepts $w$, $L(N) = \Sigma^*$, so $R$ rejects $\encoding{N}$, and thus, $S$ accepts.
+    \item when $M$ rejects/runs forever on $w$, $L(N) = \emptyset$, so $R$ accepts $\encoding{N}$, and thus, $S$ rejects.
+\end{itemize}
+
+$A_{TM}$ is undecidable $\Rightarrow$ contradiction $\Rightarrow E_{TM}$ is undecidable.
+
+$\overline{E_{TM}}= \set{\encoding{M}: M \text{ is a TM s.t. } L(M) \neq \emptyset} \\ \cup \set{x: x \text{ is not a valid encoding of a TM}}$. TM $U$ recognizes $\overline{E_{TM}}$.
+
+$U$ = on input $x$:
+
+\begin{itemize}
+    \item If $x$ not of form of $\encoding{M}$, where $M$ is a TM, \emph{accept}.
+    \item Nondeterministically choose a string $w \in \Sigma^*$, run $M$ on $w$.
+    \item \emph{Accept} if $M$ accepts; otherwise \emph{reject}.
+\end{itemize}
+
+$U$ recognizes $\overline{E_{TM}}$ because:
+
+\begin{itemize}
+    \item when $x$ not of form $\encoding{M}$, $U$ accepts
+    \item when $x = \encoding{M} \in \overline{E_{TM}}, L(M) \neq \emptyset$ which guesses a string $w \in L(M)$, and thus $U$ accepts in that branch.
+    \item when $x = \encoding{M} \notin \overline{E_{TM}}, L(M) = \emptyset$, there is not string $w \in \Sigma^*$ which $M$ accepts, so the computation tree of $U$ does not have a branch that terminates in an acceptable state, and thus, $U$ rejects.
+\end{itemize}
+
+$\overline{E_{TM}}$ is recognizable and $E_{TM}$ is undecidable $\Rightarrow E_{EM}$ is not recognizable.
 
 \section{Time Complexity}
 
