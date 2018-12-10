@@ -164,7 +164,7 @@ $3SAT \leq DOUBLE-SAT$ by adding an extra Boolean variable to the $3SAT$ instanc
 % Reductions Tutorial Q1B
 \underline{$CNF_3$}
 
-Show $3SAT \leq_p CNF_3$.
+Show $3SAT \leq_P CNF_3$.
 
 Given a 3CNF formula $\phi$. For each variable $x$ give different names $x_1, \ldots, x_k$. Then we define $\phi_x = (x_1 \vee \neg x_2) \wedge (x_2 \vee \neg x_3) \wedge \ldots \wedge (x_k \vee \neg x_1)$. $a_1 = \ldots = a_k$ to satisfy $\phi_x$. $\varphi = \bigwedge_x \phi_x$.
 
@@ -238,7 +238,7 @@ Case 2: $k \leq \frac{n}{2}$. $H$ = $G$ with $l$ new nodes, each of which is con
 % Reductions Tutorial Q2B
 \underline{$DOMSET$}
 
-Show $VC \leq_p DOMSET$
+Show $VC \leq_P DOMSET$
 
 $G$ is a graph with a vertex cover of size $k$. Construct $G'$:
 
@@ -253,21 +253,21 @@ Output $\encoding{G', k'}$ for $DOMSET$.
 % Reductions Tutorial Q2C
 \underline{$HITTING$}
 
-Show $VC \leq_p HITTING$
+Show $VC \leq_P HITTING$
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. For each edge $(u, v)$, $S_i = \set{u, v}$
 
 % Reductions Tutorial Q2D
 \underline{$SETCOVER$}
 
-Show $VC \leq_p SETCOVER$.
+Show $VC \leq_P SETCOVER$.
 
 $G$ is a graph with a vertex cover of size $k$. Let $\mathcal{U} =$ all vertices in $G$. $S_i$ = set of edges incident to vertex $v_i$. $k$ is still the same.
 
 % Reductions Tutorial Q2H
 \underline{$TSP$}
 
-Show $HAMPATH \leq_p TSP$.
+Show $HAMPATH \leq_P TSP$.
 
 $\encoding{G} \in HAMPATH$. Construct $G'$:
 
@@ -277,6 +277,45 @@ $\encoding{G} \in HAMPATH$. Construct $G'$:
 \end{itemize}
 
 Output $\encoding{G', k}$ for $TSP$.
+
+\section{Communication Complexity}
+
+\subsection{Trivial Protocol}
+
+\begin{itemize}
+    \item Alice sends $x$ to Bob ($\lg(x)$).
+    \item Bob computes $z$: $f(x, y)$.
+    \item Bob sends $z$ to Alice ($\lg(z)$).
+\end{itemize}
+
+$D(f) \leq \lg(x) + \lg(z)$.
+
+\subsection{Monochromatic Partition}
+
+\begin{itemize}
+    \item $C^{partition} (f) = \min \set{\abs{R}: R \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
+    \item For any protocol tree $T$, $\set{R_v: v \text{ is a leaf of } T}$ is an f-monochromatic partition.
+    \item $D(f) \geq \ceil{\lg(C^{partition} (f))}$
+\end{itemize}
+
+\subsection{Fooling Sets}
+
+Let $f: X \times Y \rightarrow Z$. A set $S$ is a fooling set for $f$ if :
+
+\begin{itemize}
+    \item All $(x, y) \in S$ have the same value $f(x, y) = z$.
+    \item For all distinct $(x, y) \in S$ and $(x', y') \in S$, either $f(x', y) \neq z$ or $f(x, y') \neq z$.
+\end{itemize}
+
+$D(f) \geq \ceil{\log(\abs{S} + 1)}$
+
+Examples:
+
+\begin{itemize}
+    \item $D(EQ_n) \geq n + 1$
+    \item $D(GEQ_n) \geq n + 1$
+    \item $D(DISJ_n) \geq n + 1$
+\end{itemize}
 
 \end{multicols*}
 
