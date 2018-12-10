@@ -1,7 +1,8 @@
 \documentclass[10pt,landscape,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[utopia,sfscaled]{mathdesign}
+% \usepackage[utopia,sfscaled]{mathdesign}
+\usepackage{amssymb}
 \usepackage{multicol}
 \usepackage[top=2mm,bottom=2mm,left=1mm,right=1mm]{geometry}
 \usepackage{lipsum}
@@ -219,8 +220,6 @@ $\overline{E_{TM}}$ is recognizable and $E_{TM}$ is undecidable $\Rightarrow E_{
 
 Let $L_1, L_2 \in$ NP; $L_3 = L_1 \cup L_2$. $v_1$ and $v_2$ are verifiers for $L_1$ and $L_2$. $v_3 = v_1 \vee v_2$. $v_3$ is polytime $\Rightarrow L_3 \in$ NP.
 
-% TODO: NP is closed under concatenation, complement, etc.
-
 \underline{coNP is closed under union}:
 
 Let $L_1, L_2 \in$ coNP; $L_3 = L_1 \cup L_2$. NTM's $M_1$ and $M_2$ that decide $\overline{L_1}$ and $\overline{L_2}$ in polytime. Construct $M_3$ that decides $\overline{L_1 \cup L_2} = \overline{L_1} \cap \overline{L_2}$ in polytime. Run $M_1$ and $M_2$. Accept if both accept, rejects otherwise.
@@ -414,6 +413,7 @@ $D(f) \leq \lg(x) + \lg(z)$.
 \subsection{Monochromatic Partition}
 
 \begin{itemize}
+    \item $\mathcal{R} = \set{R_1, \ldots, R_k}$
     \item $C^{partition} (f) = \min \set{\abs{R}: R \text{ is a f-monochromatic partition}} \leq $ \# leaves of $T$
     \item For any protocol tree $T$, $\set{R_v: v \text{ is a leaf of } T}$ is an f-monochromatic partition.
     \item $D(f) \geq \ceil{\lg(C^{partition} (f))}$
