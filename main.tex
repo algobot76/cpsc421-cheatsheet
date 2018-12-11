@@ -232,6 +232,10 @@ $\ldots \overline{L_1 \cap L_2} = \overline{L_1} \cup \overline{L_2} \ldots$. Ru
 
 Suppose $L$ is NP-complete. Then $\overline{L}$ is in coNP because $L$ is in NP. Suppose $A$ is coNP, we want $A \leq_P \overline{L}$. Observe that $\overline{A}$ is in NP, and so $\overline{A} \leq_P L$ ($L$ is in NP-hard), but this is equivalent to saying $A \leq_P \overline{L}$ as desired. The other direction is similar.
 
+\underline{if P = NP then NP = coNP}
+
+$L \in \text{coNP} \Rightarrow \overline{L} \in \text{NP} \Rightarrow \overline{L} \in \text{P} \Rightarrow L \in \text{P} \Rightarrow L \in \text{NP}$
+
 \underline{if a coNP-complete problem in NP, then coNP = NP}
 
 Suppose $A$ is coNP-complete and $A$ is in NP. Let $L$ be in coNP. Then $\overline{L}$ in NP. Because $\overline{A}$ is in NP-complete, $\overline{L} \leq_P \overline{A}$, which is equivalent to $L \leq_P A$. But since $A$ is in NP, then $L$ is also in NP. Let $L$ be in NP. Then $L \leq_P \overline{A}$ because $\overline{A}$ is NP-complete. Equivalently, $\overline{L} \leq A$. Because $A$ is in NP, then $\overline{L}$ is in NP, meaning $L$ is in coNP.
@@ -445,6 +449,16 @@ $D(f) \geq \ceil{\log(\abs{S} + 1)}$
     \includegraphics[scale=0.5]{gte_2}
     \item $D(DISJ_n) \geq n + 1$, $S = \set{(A, \overline{A}): A \subseteq U}$ \\
     \includegraphics[scale=0.5]{disj_2}
+\end{itemize}
+
+\textbf{Tips}:
+
+\begin{itemize}
+    \item Prove correctness of $S$:
+    \begin{itemize}
+        \item $f(x, y) = 1 \; \forall (x, y) \in S$
+        \item For $(x, y), (x', y') \in S$, $f(x, y') = 0$ and $f(x', y) = 0$.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Nondeterministic Communication Complexity}
