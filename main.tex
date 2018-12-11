@@ -120,6 +120,14 @@ Recognizable languages are not closed under:
 \begin{itemize}
     \item A set $A$ is countable if either it is finite or it has the same size as $\N$.
     \item $\R$ is uncountable.
+    \item $\mathcal{B}$ = set of all infinite binary numbers; it is uncountable.
+\end{itemize}
+
+\textbf{Tips}:
+
+\begin{itemize}
+    \item All regular languages are finite $\Rightarrow$ countable.
+    \item We can prove a set is uncountable by proving its subset is uncountable (may use $\R$ or $\mathcal{B}$).
 \end{itemize}
 
 \subsection{Misc}
@@ -292,8 +300,6 @@ Probabilities:
 \underline{BPP = coBPP}
 
 Swap accepting and rejecting states.
-
-% TODO: The Cook-Levin Theorem
 
 \subsection{$3SAT$ Related Reductions}
 
@@ -475,6 +481,11 @@ $D(f) \geq \ceil{\log(\abs{S} + 1)}$
     \item $C^{\text{partition}} \geq C^{\text{1-cover}} (f) + C^{\text{1-cover}} (\neg f)$
     \item $N(f) \geq \ceil{\log{\abs{S}}}$
     \item $N(f) = \ceil{\log{C^{\text{1-cover}} (f)}} \leq \ceil{\log{C^{\text{partition}} (f)}} \leq D(f)$
+    \item $D(f) = O(\log{\abs{\mathcal{C}_1}} \cdot \log{\abs{\mathcal{C}_0}} = O(N(f) \cdot N(\neg f)))$
+    \begin{itemize}
+        \item $\mathcal{C}_1$  = cover of 1-entries of minimum size
+        \item $\mathcal{C}_0$  = cover of 0-entries of minimum size
+    \end{itemize}
 \end{itemize}
 
 \textbf{Examples}:
@@ -484,8 +495,6 @@ $D(f) \geq \ceil{\log(\abs{S} + 1)}$
     \includegraphics[scale=0.5]{not_disj1} \\
     \includegraphics[scale=0.5]{not_disj2}
 \end{itemize}
-
-% TODO: Reductions
 
 \end{multicols*}
 
